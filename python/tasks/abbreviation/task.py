@@ -15,13 +15,14 @@ def substring_nouppercase(a, b):
     match_started = False
     indb = 0
     result = -1
+    size = 0
 
     for symb in b:
         #print("symb {0} indb {1}".format(symb, indb))
         if symb.lower() == syma.lower():
             if match_started:
                 if len(a) <= inda + 1:
-                    return result
+                    return result, len(a) + size
                 else:
                     inda += 1
                     syma = a[inda]
@@ -29,19 +30,22 @@ def substring_nouppercase(a, b):
                 result = indb
                 match_started = True
                 if len(a) <= inda + 1:
-                    return result
+                    return result, len(a) + size
                 else:
                     inda += 1
                     #print(inda)
                     syma = a[inda]
         else:
-            match_started = False
-            result = -1
-            inda = 0
-            syma = a[inda]
+            if not symb.islower():
+            	match_started = False
+            	result = -1
+            	inda = 0
+            	syma = a[inda]
+            elif match_started:
+                size += 1
         indb = indb + 1
 
-    return -1
+    return (-1, -1)
 
 #rename me
 def start_and_end_of_substring(a, b):
@@ -78,6 +82,8 @@ def abbreviation(a,b):
 
 if __name__ == "__main__":
     #print("A")
-    #print(substring_nouppercase("abc", "adbccdesfAbc"))
-    print(yes_or_no("AbCdE", "AFE"))
+    #beFgH
+    #EFH
+    print(substring_nouppercase("EFH", "beFgH"))
+    #print(yes_or_no("AbCdE", "AFE"))
     #print(index_and_length_of_substring("AbCdE", "AFE"))

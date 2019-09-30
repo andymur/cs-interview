@@ -49,10 +49,10 @@ def substring_nouppercase(a, b):
 
 #rename me
 def start_and_end_of_substring(a, b):
-    index = substring_nouppercase(b, a) 
+    index, length = substring_nouppercase(b, a) 
     
     if index > -1:
-        return (index, index + len(b))
+        return (index, index+length)
     else:
         return (-1,-1)
 
@@ -63,12 +63,12 @@ def yes_or_no(a, b):
     start_index, end_index = start_and_end_of_substring(a, b)
 
 
-
+    print("start index: {0}, end index: {1}".format(start_index, end_index))
     if start_index > -1:
         #substr = a[start_index:end_index]
         prefix = a[:start_index]
         postfix = a[end_index:]
-    
+        print(prefix + " " + postfix)
         if prefix.lower() == prefix and postfix.lower() == postfix:
             return "YES"
         else:
@@ -85,5 +85,6 @@ if __name__ == "__main__":
     #beFgH
     #EFH
     print(substring_nouppercase("EFH", "beFgH"))
+    print(yes_or_no("beFgH", "EFH"))
     #print(yes_or_no("AbCdE", "AFE"))
     #print(index_and_length_of_substring("AbCdE", "AFE"))

@@ -8,11 +8,51 @@
 #beFgH
 #EFH
 
+#eFgH
+#EFH
+
+    #FgH
+    #FH
+    #--
+    #FgH
+    #EFH
+
 # should be YES but NO now
 
 # ERreEerR
 # ERRER
+    #eEerR
+    #RER
+    #--
+    #eEerR
+    #ER
 
+
+def another_attempt(longer, shorter):
+    short_idx = 0
+    long_idx = 0
+    short_len = len(shorter)
+    long_len = len(longer)
+
+    while short_idx < short_len and long_idx < long_len:
+        
+        short_symbol = shorter[short_idx]
+        long_symbol = longer[long_idx]
+
+        if short_symbol == long_symbol:
+            short_idx+=1
+            long_idx+=1
+        elif short_symbol = long_symbol.upper():
+            return another_attempt(longer, shorter[1:]) || another_attempt(longer[1:], shorter[1:])
+        elif long_symbol.upper():
+            return False
+        else:
+            long_idx+=1
+
+    if long_idx < long_len:
+        return longer.lower() == longer
+
+    return short_idx >= short_len
 
 # result abc, cdeafabcasd should be 5 but abc, cdeabd should be -1
 def substring_nouppercase(a, b):

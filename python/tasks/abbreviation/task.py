@@ -28,23 +28,28 @@
     #ER
 
 
-def another_attempt(longer, shorter):
+def another_attempt(longer, shorter, level = 0):
     short_idx = 0
     long_idx = 0
     short_len = len(shorter)
     long_len = len(longer)
-
+    if (level > 1000):
+        print("RECURSION!")
+        return False
+    #print("===== ENTER ====")
+    #print("longer: {0}, shorter: {1}, level: {2}".format(longer, shorter, level))
+    print("longer: {0}, shorter: {1}, level: {2}".format(len(longer), len(shorter), level))
     while short_idx < short_len and long_idx < long_len:
         
         short_symbol = shorter[short_idx]
         long_symbol = longer[long_idx]
-
+        #print("long symbol: {1}, short symbol: {0}".format(short_symbol, long_symbol))
         if short_symbol == long_symbol:
             short_idx+=1
             long_idx+=1
-        elif short_symbol = long_symbol.upper():
-            return another_attempt(longer, shorter[1:]) || another_attempt(longer[1:], shorter[1:])
-        elif long_symbol.upper():
+        elif short_symbol == long_symbol.upper():
+            return another_attempt(longer[long_idx + 1:], shorter[short_idx:], level+1) or another_attempt(longer[long_idx + 1:], shorter[short_idx + 1:], level+1)
+        elif long_symbol.isupper():
             return False
         else:
             long_idx+=1
@@ -157,7 +162,10 @@ def read_and_run():
         print(result)
 
 if __name__ == "__main__":
-    read_and_run()
+    print(another_attempt("ERreEerREeerErrrrRRyeReErrerrereEEeRRErRrrereeeeerErereerReRereeeeCrreErREreeerrRrRERreeererererEeEEeerrerrereeRRerreeerrreRererereeSerEeeRereerrReErrrereErrerrrreererrsRRecerEreeRrrreRereerErrRRrrEeEererRrrreRerReRrereererereEeereEereesrERreReeerReErEeeeeRererReereRereerRrrRRerrerreeereEeeereerrEreeERreReRrEErRRerEereeeRreeErReerrEerEeEreerrTeeeEErreRErrerreeeeereeEeerERErRrereerreerRrrreerEreeRrErreeeRReRerrreerrEreerrerEeEeerreeeeEeerRrrerrsrerrereReREerEerrRerRErereRreerRreRReEeeeRerRereeerRerererrerrrreeReeERereeeesrrEerrrreeeeerrrrereeeeeerRrRrreeereRrreeseERrrrerReeeerreeeeereEerErrrRrreeeerRerrrrrErRreREeeerrrrrrrErrreerrRrereerrRrEEErsREeeerReEeErrrrRrRererereeererreereeRreerrerREeEReereerrrrrrereereeeerEeeeerreerSrReererrRereREreereErEReEReeeerrerEeeEeeRreeeRreeeEreeeeEreerrrEeereeerrrrERrRERReeerreEeJEEeSEeeeEeEeeRrRrrreeeRerrreerEreeererEereeeeRRrreReRrEerreEreeeerEErRrRrrrrerrereeEERErerreerrRrrreeeErEeErEreRrErRrErrreeeereeerrrrSeReeeeRerrrrerrEreerEeeeeeeerrreerreRerrREr", 
+        "ERREREERERRREERREERRERRREEEERRREREEECEREERRRERREEEERRREERRERRRRSERERERERERERRRRRREERREREERRREEERERRRRRRREREEESEREREREEEERRERERRRERRRRREEREREERERREERRERRERREREEEERRTEEEEREEREEEEEEEERERRRRERREERREREERRREREREEREEREEERRRERERERREEREERRERRERERERRRREEERRREERRRRREREREREEEEERRRRRRRREERRERRERRRERERRREEERRRRERRERERRRERRRREREERREEESREEREERRRERREEEERRERERREEREREEREERREEEEEERRRSRERREREEEERERREREEERRERREEEEEEEREEERERRERREREEJEESEEEEEEERRRREEREREEEEEERERRRRRRREEEEREERRREEREEERRREEEEREERRERRERRRSREEERERREERRRRER"))
+    #print(another_attempt("ERreEerREeer", "ERREREE"))
+    #read_and_run()
     #print("A")
     #beFgH
     #EFH
